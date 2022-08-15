@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, DetailView
 
 class Inicio(TemplateView):
 
-    template_name = 'templates/product.html'
+    template_name = 'templates/index.html'
 
 class Test(TemplateView):
 

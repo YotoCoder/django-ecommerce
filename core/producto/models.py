@@ -8,4 +8,4 @@ class Producto(models.Model):
     price = models.FloatField()
     description = models.CharField(max_length=500)
     color = models.CharField(max_length=30)
-    img = models.ImageField(upload='img/products')
+    img = models.ImageField(upload_to='img/products')
