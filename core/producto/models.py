@@ -9,3 +9,8 @@ class Producto(models.Model):
     description = models.CharField(max_length=500)
     color = models.CharField(max_length=30)
     img = models.ImageField(upload_to='img/products')
+    offer = models.CharField(max_length=30)
+    in_stock = models.BooleanField(verbose_name='Stock')
+    
+    def __str__(self):
+        return self.name
