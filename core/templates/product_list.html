@@ -1,0 +1,53 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+
+{% block content %}
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+
+        {% for head in headlines %}
+            <th scope="col"> {{head.name}} </th>
+        {% endfor %}
+
+    </tr>
+  </thead>
+  <tbody>
+     {% for head in object_list %}            
+        <tr>
+        <th scope="row">{{head.id}}</th>
+        <td>{{head.name}}</td>
+        <td>{{head.price}}</td>
+        <td>{{head.description}}</td>
+        <td>{{head.code}}</td>
+        <td>{{head.color}}</td>
+        <td><img src='{{head.img}}'></img></td>
+        <td>{{head.offer}}</td>
+        <td>{{head.in_stock}}</td>
+        <td>{{head.category}}</td>
+        <td>{{head.clasification}}</td>
+        </tr>
+        {% endfor %}
+  </tbody>							
+</table> 
+                
+
+
+    <div class="pagination">
+    <span class="step-links">
+              {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock content %}
