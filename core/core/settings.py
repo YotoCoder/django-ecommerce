@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'producto',
-    'django_tables2',
+    'company',
 ]
 
 MIDDLEWARE = [

@@ -21,7 +21,7 @@ class Producto(models.Model):
     description = models.CharField(max_length=500)
     code = models.CharField(max_length=50)
     color = models.CharField(max_length=30)
-    img = models.ImageField(upload_to='img/products', blank=True)
+    img = models.ImageField(upload_to='img/productos/', blank=True)
     offer = models.CharField(max_length=30)
     in_stock = models.IntegerField()
     category = models.CharField(max_length=30)

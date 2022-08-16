@@ -1,22 +1,24 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView, CreateView, ListView
+from django.views.generic import TemplateView, DetailView, CreateView, ListView, DeleteView, UpdateView
 from .models import Producto
 from .forms import ProductForm
 
 # Create your views here.
 
-class Inicio(TemplateView):
+class DeleteProduct(DeleteView):
+    model = Producto
+    template_name = 'templates/producto/delete_product.html'
+    success_url = '/product-list'
 
-    template_name = 'templates/index.html'
-
-class Test(TemplateView):
-
-    template_name = 'templates/test.html'
-
+class UpdateProduct(UpdateView):
+    model = Producto
+    template_name = 'templates/producto/update_product.html'
+    success_url = '/product-list'
+    fields = '__all__'
 
 class ProductList(ListView):
     model = Producto
-    template_name = 'templates/product_list.html'
+    template_name = 'templates/producto/product_list.html'
     paginate_by = 10
 
     def get_context_data(self, **kwargs):
@@ -27,13 +29,13 @@ class ProductList(ListView):
 class ProductDetail(DetailView):
 
     model = Producto
-    template_name = 'templates/product.html'
+    template_name = 'templates/producto/product_detail.html'
 
 class CreateProduct(CreateView):
 
     model = Producto
-    template_name = 'templates/create_product.html'
+    template_name = 'templates/producto/create_product.html'
     form = ProductForm
     fields = '__all__'
-    success_url = 'list-products'
+    success_url = '/product-list'
 
