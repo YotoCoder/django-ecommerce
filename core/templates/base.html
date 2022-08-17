@@ -35,6 +35,10 @@
     </head>
 </head>
 <body>
+	<style>
+		:root {--color-base: {{object.color}}}
+	</style>
+
     {% block header %}
     <!-- HEADER -->
 	<header>
@@ -47,8 +51,8 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> {{object.address}} </a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> {{object.currency}}</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<li><a href="#">{{object.currency}}</a></li>
+						<li><a href="/admin"><i class="fa fa-user-o"></i> My Account</a></li>
 					</ul>
 				</div>
 			</div>
@@ -64,7 +68,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									{% if head.img %} <img width="250px" height="150" src='{{head.img.url}}'>{% endif %}
+									<img width="160px" height="90" src='{{object.logo.url}}'>
 								</a>
 							</div>
 						</div>
@@ -1089,7 +1093,7 @@
                         </ul>
                         <span class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> - {{object.name}} - All rights reserved
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </span>
                     </div>
