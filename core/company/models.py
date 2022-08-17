@@ -9,11 +9,13 @@ class Category(models.Model):
         return self.name    
 
 class Currency(models.Model):
-    money_simbol = models.TextField(max_length=10)
+    money_simbol = models.CharField(max_length=10)
+    def __str__(self):
+        return self.money_simbol
 
-
+        
 class Company(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    # user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=30, null=True)
     email = models.EmailField()
     phone = models.CharField(max_length=25)
@@ -22,7 +24,7 @@ class Company(models.Model):
     color = models.CharField(max_length=30)
     about_me = models.TextField(max_length=255)
 
-    currency = models.CharField(max_length=10)
+    currency = models.OneToOneField('Currency', null=True, blank=True, on_delete=models.CASCADE)
 
     category = models.ManyToManyField('Category')
 
@@ -33,3 +35,5 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
