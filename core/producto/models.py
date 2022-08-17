@@ -30,3 +30,7 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.name
+
+class Index(models.Model):
+    product = models.ManyToManyField('Producto')
+    

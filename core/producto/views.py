@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView, CreateView, ListView, DeleteView, UpdateView
-from .models import Producto
+from django.views.generic import TemplateView, DetailView,CreateView, ListView, DeleteView, UpdateView
+from .models import Producto, Index
 from .forms import ProductForm
 
 # Create your views here.
+
+class Index(ListView):
+    model = Producto
+    template_name = 'templates/producto/index.html'
 
 class DeleteProduct(DeleteView):
     model = Producto
@@ -27,12 +31,10 @@ class ProductList(ListView):
         return context
 
 class ProductDetail(DetailView):
-
     model = Producto
     template_name = 'templates/producto/product_detail.html'
 
 class CreateProduct(CreateView):
-
     model = Producto
     template_name = 'templates/producto/create_product.html'
     form = ProductForm
