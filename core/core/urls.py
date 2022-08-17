@@ -1,12 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from producto.views import ProductDetail, CreateProduct, ProductList, UpdateProduct, DeleteProduct
+from producto.views import ProductDetail, CreateProduct, ProductList, UpdateProduct, DeleteProduct, Index
 from django.conf import settings
 from django.conf.urls.static import static
-from company.views import CompanyView
 
 urlpatterns = [
-    path('<int:pk>', CompanyView.as_view()),
+    path('', Index.as_view()),
     path('admin/', admin.site.urls),
     path('product-detail/<slug:pk>', ProductDetail.as_view()),
     path('create-product', CreateProduct.as_view()),

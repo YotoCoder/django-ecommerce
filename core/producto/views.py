@@ -5,6 +5,10 @@ from .forms import ProductForm
 
 # Create your views here.
 
+class Index(ListView):
+    model = Producto
+    template_name = 'templates/index.html'
+
 class DeleteProduct(DeleteView):
     model = Producto
     template_name = 'templates/producto/delete_product.html'
