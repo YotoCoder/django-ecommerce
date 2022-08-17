@@ -14,21 +14,18 @@
     </tr>
   </thead>
   <tbody>
-     {% for head in object_list %}            
+     {% for head in object_list %}
         <tr>
         <th scope="row">{{head.id}}</th>
         <td><a href="/product-detail/{{head.id}}" >{{head.name}}</a></td>
         <td>{{head.price}}</td>
-        <td>{{head.description}}</td>
-        <td>{{head.code}}</td>
-        <td>{{head.color}}</td>
-        <td>{% if head.img %} <img width="70px" height="70" src='{{head.img.url}}'>{% endif %}</td>
-        <td>{{head.offer}}</td>
-        <td>{{head.in_stock}}</td>
-        <td>{{head.category}}</td>
-        <td>{{head.clasification}}</td>
+        <td>{% if head.description %}{% endif %}</td>
+        <td>{% if head.code %}{{ head.code }}{% endif %}</td>
+        <td>{% if head.color %}{{ head.color }}{% endif %}</td>
+        <td>{% if head.img %}<img width="70px" height="70" src='{{head.img.url}}'>{% endif %}</td>
+        <td>{% if head.in_stock %}{{ head.in_stock }}{% endif %}</td>
+        <td>{% if head.category %}{{ head.category }}{% endif %}</td>
         <td><button class="btn btn-info"><a href="/product-detail/{{head.id}}" >Open</a></button>
-            
             <button class="btn btn-warning"><a href="/update-product/{{head.id}}" >Update</a></button>
             <button class="btn btn-danger"><a href="/delete-product/{{head.id}}" >Delete</a></button></td>
         </tr>
