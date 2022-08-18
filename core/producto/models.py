@@ -1,11 +1,10 @@
+from ast import Delete
 from distutils.command.upload import upload
 from importlib.metadata import requires
 from random import choices
 from secrets import choice
 from unicodedata import category
 from django.db import models
-
-# Create your models here.
 
 stars = ( 
     (1, 1), 
@@ -29,9 +28,7 @@ class Producto(models.Model):
     color = models.CharField(max_length=30, blank=True, null=True, default='')
     img = models.ImageField(upload_to='img/productos/', blank=True, null=True, default='')
     in_stock = models.IntegerField(default=1)
-    category = models.ManyToManyField(Category)
-
-    clasification = models.IntegerField(choices=stars)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

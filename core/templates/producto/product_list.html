@@ -24,10 +24,13 @@
         <td>{% if head.color %}{{ head.color }}{% endif %}</td>
         <td>{% if head.img %}<img width="70px" height="70" src='{{head.img.url}}'>{% endif %}</td>
         <td>{% if head.in_stock %}{{ head.in_stock }}{% endif %}</td>
-        <td>{% if head.category %}{{ head.category }}{% endif %}</td>
-        <td><button class="btn btn-info"><a href="/product-detail/{{head.id}}" >Open</a></button>
-            <button class="btn btn-warning"><a href="/update-product/{{head.id}}" >Update</a></button>
-            <button class="btn btn-danger"><a href="/delete-product/{{head.id}}" >Delete</a></button></td>
+        <td>
+            {{ head }}
+            
+            
+        <td><a href="/product-detail/{{head.id}}" ><button class="btn btn-info">Open</button></a>
+            <a href="/update-product/{{head.id}}" ><button class="btn btn-warning">Update</button></a>
+            <a href="/delete-product/{{head.id}}" ><button class="btn btn-danger">Delete</button></a></td>
         </tr>
         {% endfor %}
   </tbody>							
@@ -38,7 +41,7 @@
 
     <div class="pagination">
     <span class="step-links">
-              {% if page_obj.has_previous %}
+            {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>
                 <a href="?page={{ page_obj.previous_page_number }}">previous</a>
             {% endif %}
